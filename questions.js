@@ -669,5 +669,111 @@ const allQuestions = [
       "when the sufficiently trained network processes an unknown sequence, it applies the rules learned in training to recognize particular structural patterns"
     ],
     "correct_index": 0
+  },
+  {
+    "question": "How does regression differ from classification?",
+    "options": [
+      "It works without features",
+      "It ignores outcome variables",
+      "It predicts continuous outcomes",
+      "It classifies text only"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "What scenario best dictates the importance of quaternary structure in protein function?",
+    "options": [
+      "The transcription of rRNA by RNA polymerase I",
+      "The regulation of gene expression via UTRs.",
+      "A single polypeptide folding into an alpha helix",
+      "Haemoglobin’s oxygen function binding ability requires 4 subunits working cooperatively"
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "What is the goal of classification in supervised learning?",
+    "options": [
+      "To find continuous values",
+      "To analyse random text",
+      "To predict categorical labels",
+      "To measure time series data"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "What is the main purpose of the BLAST algorithm?",
+    "options": [
+      "To sort sequencing reads by quality score",
+      "To find sequence alignments using a heuristic",
+      "To compose sequence data",
+      "To visualize genome annotations"
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "What does PCA aim to maximize in the new feature space?",
+    "options": [
+      "Variance of the data",
+      "Distance to the origin",
+      "Number of features",
+      "Class separation accuracy"
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "What is the basic idea of Markov Chain Clustering?",
+    "options": [
+      "Use random walks to identify dense clusters",
+      "Use fixed thresholds for gene activity evaluation",
+      "Compare sequences using BLAST",
+      "Group nodes by molecular weight resulting in sparse clusters"
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "PolyA is often used as an indicator of the presence of functional codon?",
+    "options": [
+      "true",
+      "false"
+    ],
+    "correct_index": 1
+  },
+  {
+    "question": "Which of the following is incorrect about k-Means Clustering?",
+    "options": [
+      "It is a divisive approach",
+      "K-means clustering does not produce a dendrogram",
+      "In this method data are partitioned into k-clusters which are prespecified at the outset",
+      "It is a deep learning method"
+    ],
+    "correct_index": 3
+  },
+  {
+    "question": "PolyA may be used as an indicator of the presence of functional codon?",
+    "options": [
+      "true",
+      "false"
+    ],
+    "correct_index": 0
+  },
+  {
+    "question": "What is the purpose of QQ plot?",
+    "options": [
+      "To measure the data frequency in a set of features",
+      "To compare averages between records",
+      "To access if data follows a normal distribution",
+      "To build regression lines"
+    ],
+    "correct_index": 2
+  },
+  {
+    "question": "What does a power law distribution imply in protein networks?",
+    "options": [
+      "All proteins interact with only large proteins",
+      "All proteins interact equally with each other resulting in an average set of connections",
+      "Most proteins have few connections, while few have many",
+      "Protein function is predictable only by size"
+    ],
+    "correct_index": 2
   }
 ];
