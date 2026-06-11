@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bioinformatics Practice Exam</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Glowing background elements -->
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <div id="quiz-container">
+    <!-- Quiz Header -->
+    <header>
+      <div class="app-title-container">
+        <h1>Bioinformatics Quiz</h1>
+        <div class="progress-info" id="progress-info" style="display: none;">Q 1 / 10</div>
+      </div>
+      <div class="progress-bar-container" id="progress-bar-container" style="display: none;">
+        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+      </div>
+    </header>
+
+    <!-- Welcome / Start Screen -->
+    <section id="welcome-screen" class="screen active">
+      <div class="welcome-content">
+        <div class="welcome-icon">
+          <i class="fa-solid fa-dna"></i>
+        </div>
+        <p class="welcome-text" style="margin-bottom: 25px;">
+          Welcome to the Bioinformatics (Polito) Practice Exam application.
+        </p>
+
+        <!-- Quiz Settings Container -->
+        <div class="settings-container">
+          <!-- Question Ordering & Count -->
+          <div class="settings-group">
+            <h3><i class="fa-solid fa-layer-group"></i> Question Mode</h3>
+            <div class="radio-cards">
+              <label class="radio-card">
+                <input type="radio" name="question-mode" value="pdf-order" checked>
+                <div class="card-content">
+                  <div class="card-icon"><i class="fa-solid fa-list-ol"></i></div>
+                  <div class="card-title">PDF Order</div>
+                  <div class="card-desc">Show all 76 questions in original sequence</div>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="question-mode" value="random-all">
+                <div class="card-content">
+                  <div class="card-icon"><i class="fa-solid fa-shuffle"></i></div>
+                  <div class="card-title">Random All</div>
+                  <div class="card-desc">Shuffle and show all 76 questions</div>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="question-mode" value="random-15">
+                <div class="card-content">
+                  <div class="card-icon"><i class="fa-solid fa-dice"></i></div>
+                  <div class="card-title">Quick 15</div>
+                  <div class="card-desc">Solve 15 randomly selected questions</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Option Shuffle -->
+          <div class="settings-group">
+            <h3><i class="fa-solid fa-sliders"></i> Option Order (for 4-choice questions)</h3>
+            <div class="radio-cards options-cards">
+              <label class="radio-card">
+                <input type="radio" name="option-mode" value="opt-pdf-order" checked>
+                <div class="card-content">
+                  <div class="card-icon"><i class="fa-solid fa-sort-alpha-down"></i></div>
+                  <div class="card-title">Original Options</div>
+                  <div class="card-desc">Keep options in original order (A, B, C, D)</div>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="option-mode" value="opt-random">
+                <div class="card-content">
+                  <div class="card-icon"><i class="fa-solid fa-random"></i></div>
+                  <div class="card-title">Shuffle Options</div>
+                  <div class="card-desc">Randomize options (True/False preserved)</div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button id="start-btn" class="btn">
+          Start Quiz <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- Quiz Screen -->
+    <section id="quiz-screen" class="screen">
+      <div class="question-container">
+        <div class="question-text" id="question-text">
+          Loading question...
+        </div>
+      </div>
+      <div class="options-list" id="options-list">
+        <!-- Option buttons dynamically generated -->
+      </div>
+      <div class="action-container">
+        <button id="next-btn" class="btn btn-next">
+          Next Question <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- Result / Score Screen -->
+    <section id="result-screen" class="screen">
+      <div class="result-content">
+        <!-- SVG Gauge for Score percentage -->
+        <div class="result-gauge">
+          <svg class="gauge-svg" viewBox="0 0 160 160">
+            <!-- Defining dynamic gradient for gauge -->
+            <defs>
+              <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="hsl(215, 89%, 60%)" />
+                <stop offset="100%" stop-color="hsl(215, 89%, 45%)" />
+              </linearGradient>
+            </defs>
+            <circle class="gauge-bg" cx="80" cy="80" r="70" />
+            <circle class="gauge-fill" id="gauge-fill" cx="80" cy="80" r="70" stroke="url(#gaugeGrad)" />
+          </svg>
+          <div class="gauge-text-container">
+            <div class="gauge-percentage" id="gauge-percentage">0%</div>
+            <div class="gauge-label">Score</div>
+          </div>
+        </div>
+
+        <h2 class="result-heading" id="result-heading">Quiz Completed!</h2>
+        <p class="result-score-details">
+          You answered <span class="score-number" id="correct-count">0</span> out of <span class="score-number"
+            id="total-count">10</span> questions correctly.
+        </p>
+
+        <button id="restart-btn" class="btn">
+          Restart Quiz <i class="fa-solid fa-rotate-right"></i>
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <footer class="app-footer">
+    <a href="https://cemeren.dev" target="_blank" rel="noopener noreferrer">cemeren.dev</a>
+  </footer>
+
+  <!-- JavaScript Files -->
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
