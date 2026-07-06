@@ -1,8 +1,7 @@
 // State variables
 let quizQuestions = [];
 let currentIndex = 0;
-let score = 0;
-let hasAnswered = false;
+let userAnswers = []; // selected option index per question, or null if unanswered
 
 // DOM Elements
 const welcomeScreen = document.getElementById('welcome-screen');
@@ -17,6 +16,7 @@ const questionText = document.getElementById('question-text');
 const optionsList = document.getElementById('options-list');
 
 const startBtn = document.getElementById('start-btn');
+const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const restartBtn = document.getElementById('restart-btn');
 
@@ -26,10 +26,16 @@ const gaugePercentage = document.getElementById('gauge-percentage');
 const gaugeFill = document.getElementById('gauge-fill');
 const resultHeading = document.getElementById('result-heading');
 
+const sourceContainer = document.getElementById('source-container');
+const sourceBtn = document.getElementById('source-btn');
+const sourcePanel = document.getElementById('source-panel');
+
 // Event Listeners
 startBtn.addEventListener('click', startQuiz);
+prevBtn.addEventListener('click', prevQuestion);
 nextBtn.addEventListener('click', nextQuestion);
 restartBtn.addEventListener('click', restartQuiz);
+sourceBtn.addEventListener('click', toggleSourcePanel);
 
 // Helper function to shuffle array
 function shuffleArray(array) {
@@ -79,11 +85,11 @@ function startQuiz() {
   }
 
   quizQuestions = activeQuestions;
-  
+
   // 3. Reset state
   currentIndex = 0;
-  score = 0;
-  
+  userAnswers = new Array(quizQuestions.length).fill(null);
+
   // 4. Switch screens
   welcomeScreen.classList.remove('active');
   resultScreen.classList.remove('active');
@@ -97,77 +103,142 @@ function startQuiz() {
   displayQuestion();
 }
 
-// Display current question
+// Display current question (fresh or previously-answered, restoring state)
 function displayQuestion() {
-  hasAnswered = false;
-  nextBtn.classList.remove('visible');
-  
+  sourceContainer.classList.remove('visible');
+  sourcePanel.classList.remove('open');
+  sourcePanel.innerHTML = '';
+  delete sourcePanel.dataset.filled;
+  sourceBtn.classList.remove('active');
+
   const currentQ = quizQuestions[currentIndex];
-  
+
   // Update Question Text (Prepend clean sequential question number)
   questionText.innerHTML = `<span style="color:var(--primary); font-size:1.1rem; font-weight:700; display:block; margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Question ${currentIndex + 1}</span>${currentQ.question}`;
-  
-  // Update Progress Info & Progress Bar (before selection animation)
+
+  // Update Progress Info & Progress Bar
   progressInfo.textContent = `Q ${currentIndex + 1} / ${quizQuestions.length}`;
-  const initialProgress = (currentIndex / quizQuestions.length) * 100;
-  progressBarFill.style.width = `${initialProgress}%`;
-  
+  const progress = (currentIndex / quizQuestions.length) * 100;
+  progressBarFill.style.width = `${progress}%`;
+
   // Populate Options
   optionsList.innerHTML = '';
   currentQ.options.forEach((optionText, idx) => {
     const optionBtn = document.createElement('button');
     optionBtn.className = 'option-btn';
     optionBtn.type = 'button';
-    
+
     // Prefix character (A, B, C, D)
     const prefix = String.fromCharCode(65 + idx);
-    
+
     optionBtn.innerHTML = `
       <span class="option-prefix">${prefix}</span>
       <span class="option-text-span">${optionText}</span>
       <span class="option-icon" id="icon-${idx}"></span>
     `;
-    
+
     optionBtn.addEventListener('click', () => selectOption(idx));
     optionsList.appendChild(optionBtn);
   });
+
+  // Previous button: hidden on the very first question
+  prevBtn.classList.toggle('visible', currentIndex > 0);
+
+  // Restore answered state if this question was already answered (navigated back to it)
+  const previousAnswer = userAnswers[currentIndex];
+  if (previousAnswer !== null && previousAnswer !== undefined) {
+    renderAnsweredState(previousAnswer);
+  } else {
+    nextBtn.classList.remove('visible');
+  }
+}
+
+// Render the disabled/colored option state for an already-answered question
+function renderAnsweredState(selectedIdx) {
+  const currentQ = quizQuestions[currentIndex];
+  const correctIdx = currentQ.correct_index;
+  const optionButtons = optionsList.getElementsByClassName('option-btn');
+
+  for (let i = 0; i < optionButtons.length; i++) {
+    optionButtons[i].disabled = true;
+  }
+
+  if (selectedIdx === correctIdx) {
+    optionButtons[selectedIdx].classList.add('correct');
+    document.getElementById(`icon-${selectedIdx}`).innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+  } else {
+    optionButtons[selectedIdx].classList.add('wrong');
+    document.getElementById(`icon-${selectedIdx}`).innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
+    optionButtons[correctIdx].classList.add('correct');
+    document.getElementById(`icon-${correctIdx}`).innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+  }
+
+  nextBtn.classList.add('visible');
+  sourceContainer.classList.add('visible');
 }
 
 // Handle Option Selection
 function selectOption(selectedIdx) {
-  if (hasAnswered) return;
-  hasAnswered = true;
-  
-  const currentQ = quizQuestions[currentIndex];
-  const correctIdx = currentQ.correct_index;
-  const optionButtons = optionsList.getElementsByClassName('option-btn');
-  
-  // Disable all options
-  for (let i = 0; i < optionButtons.length; i++) {
-    optionButtons[i].disabled = true;
-  }
-  
-  // Visual feedback check
-  if (selectedIdx === correctIdx) {
-    score++;
-    optionButtons[selectedIdx].classList.add('correct');
-    document.getElementById(`icon-${selectedIdx}`).innerHTML = '<i class="fa-solid fa-circle-check"></i>';
-  } else {
-    // Selected wrong one
-    optionButtons[selectedIdx].classList.add('wrong');
-    document.getElementById(`icon-${selectedIdx}`).innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
-    
-    // Highlight correct one
-    optionButtons[correctIdx].classList.add('correct');
-    document.getElementById(`icon-${correctIdx}`).innerHTML = '<i class="fa-solid fa-circle-check"></i>';
-  }
-  
+  if (userAnswers[currentIndex] !== null && userAnswers[currentIndex] !== undefined) return;
+  userAnswers[currentIndex] = selectedIdx;
+
   // Update progress bar to include completed current question
   const completedProgress = ((currentIndex + 1) / quizQuestions.length) * 100;
   progressBarFill.style.width = `${completedProgress}%`;
-  
-  // Reveal next button
-  nextBtn.classList.add('visible');
+
+  renderAnsweredState(selectedIdx);
+}
+
+// Build and toggle the verification/source panel for the current question
+function toggleSourcePanel() {
+  const isOpen = sourcePanel.classList.toggle('open');
+  sourceBtn.classList.toggle('active', isOpen);
+
+  if (isOpen && !sourcePanel.dataset.filled) {
+    const currentQ = quizQuestions[currentIndex];
+    const verified = currentQ.verified;
+    const source = currentQ.source;
+
+    let originHtml = '';
+    if (source) {
+      if (source.type === 'pdf') {
+        const pageText = source.page ? `, p. ${source.page}` : '';
+        originHtml = `<span class="source-origin"><i class="fa-solid fa-file-pdf"></i> ${source.file}${pageText}</span>`;
+      } else if (source.type === 'web' && source.url) {
+        originHtml = `<span class="source-origin"><i class="fa-solid fa-globe"></i> <a href="${source.url}" target="_blank" rel="noopener noreferrer">${source.url}</a></span>`;
+      }
+    }
+
+    const badgeHtml = verified
+      ? `<span class="source-badge verified"><i class="fa-solid fa-shield-halved"></i> Verified</span>`
+      : `<span class="source-badge unverified"><i class="fa-solid fa-triangle-exclamation"></i> Not verified</span>`;
+
+    const changeHtml = currentQ.change_note
+      ? `<div class="change-banner"><i class="fa-solid fa-triangle-exclamation"></i> <strong>Answer corrected from the original quiz.</strong> ${currentQ.change_note}</div>`
+      : '';
+
+    const explanationHtml = currentQ.explanation
+      ? `<div class="explanation-block"><h4><i class="fa-solid fa-graduation-cap"></i> Explanation</h4><p>${currentQ.explanation}</p></div>`
+      : '';
+
+    const noteHtml = source && source.note ? `<p class="source-note">${source.note}</p>` : '';
+
+    sourcePanel.innerHTML = `
+      <div class="source-header">${badgeHtml}${originHtml}</div>
+      ${noteHtml}
+      ${changeHtml}
+      ${explanationHtml}
+    `;
+    sourcePanel.dataset.filled = 'true';
+  }
+}
+
+// Move to previous question
+function prevQuestion() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    displayQuestion();
+  }
 }
 
 // Move to next question or finish quiz
@@ -190,6 +261,9 @@ function showResults() {
   
   // Calculate percentage and update labels
   const total = quizQuestions.length;
+  const score = userAnswers.reduce((count, answer, i) => (
+    answer === quizQuestions[i].correct_index ? count + 1 : count
+  ), 0);
   correctCountSpan.textContent = score;
   totalCountSpan.textContent = total;
   
