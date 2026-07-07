@@ -709,6 +709,30 @@ h1 {
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 100%;
+  max-width: 680px;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.app-footer .footer-credit {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  opacity: 0.5;
+  letter-spacing: 0.3px;
+}
+
+.app-footer .footer-separator {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  opacity: 0.35;
 }
 
 .app-footer a {
@@ -717,14 +741,16 @@ h1 {
   font-weight: 500;
   color: var(--text-muted);
   text-decoration: none;
-  opacity: 0.5;
   letter-spacing: 0.5px;
   transition: all 0.25s ease;
 }
 
 .app-footer a:hover {
-  opacity: 1;
   color: var(--primary-hover);
+}
+
+.app-footer .footer-credit:hover {
+  opacity: 1;
 }
 
 /* Animations and responsiveness */
