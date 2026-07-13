@@ -148,14 +148,14 @@ const allQuestions = [
       "true",
       "false"
     ],
-    "correct_index": 0,
+    "correct_index": 1,
     "verified": true,
     "source": {
-      "type": "web",
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC154570/",
-      "note": "With replicated microarray data, t-tests/ANOVA are standard valid statistical tests for expression-difference significance."
+      "type": "pdf",
+      "file": "4Data.Data_and_statistics.pdf",
+      "note": "t-tests/ANOVA test whether expression differs between conditions/groups (group means), not whether a single data point differs from the overall distribution mean."
     },
-    "explanation": "Microarray experiments measure expression of thousands of genes simultaneously, but technical noise and biological variability require statistical rigor to determine which differences are real. With replicated datasets, standard hypothesis tests such as the t-test (two groups) and ANOVA (more than two groups/factors) can validly test whether a gene's expression differs significantly from the null hypothesis of no real difference. This is standard, well-established practice in microarray analysis (often combined with multiple-testing correction). So the statement is true."
+    "explanation": "With replicated microarray data, t-tests (two groups) and ANOVA (more than two groups) are indeed the standard rigorous tests used. However, the null hypothesis they test is that there is no significant difference in expression BETWEEN the compared conditions/groups (i.e., between group means) — not that 'a given data point is not significantly different from the mean of the data distribution'. Comparing a single data point to the overall distribution mean is not what these tests do; they compare group means to each other. Because the statement misstates the null hypothesis being tested, it is false as written."
   },
   {
     "question": "Shotgun approach ______ sequences clones from ______ of cloned DNA",
@@ -459,14 +459,14 @@ const allQuestions = [
       "true",
       "false"
     ],
-    "correct_index": 0,
+    "correct_index": 1,
     "verified": true,
     "source": {
-      "type": "web",
-      "url": "https://www.datacamp.com/tutorial/f1-score",
-      "note": "F1-score performs well as an estimation metric when classes are balanced."
+      "type": "pdf",
+      "file": "3ML.02.MainConcepts_Evaluation.pdf",
+      "note": "Slides: accuracy is a good metric specifically when there is no large class skew (balanced dataset); F1-score is the metric introduced to handle the large-class-skew (imbalanced) case."
     },
-    "explanation": "The F1-score is the harmonic mean of precision and recall, and is especially valuable for imbalanced datasets where it avoids the misleading optimism of plain accuracy. For balanced datasets (roughly equal class sizes with similar misclassification costs), F1-score also performs well as an estimation metric, since precision and recall are both meaningful and not distorted by class skew. So F-score is indeed a good metric choice in the balanced-dataset case, making the statement true."
+    "explanation": "The course slides distinguish the two metrics by the situation they are meant for: accuracy is a good, sufficient metric when the dataset is balanced, since no class dominates and a naive biased classifier gains nothing. F1-score (the harmonic mean of precision and recall) is introduced specifically as the fix for the case where accuracy fails — large class skew, i.e. an imbalanced dataset — because it is not distorted by a dominant class. So pairing F-score with the balanced-dataset case reverses the intended contrast; F-score is the good metric for imbalanced (not balanced) datasets, making the statement false."
   },
   {
     "question": "A complete diagnostic process automatization is not generally feasible at present",
@@ -1414,5 +1414,111 @@ const allQuestions = [
       "note": "Slides: power law degree distribution ('rich get richer') means most nodes have few connections, a few hubs have many."
     },
     "explanation": "A power-law degree distribution ('rich get richer') means the probability of a node having degree k decays as a power of k, producing a highly skewed distribution: most proteins have few interaction partners, while a small minority of hub proteins have disproportionately many connections. This scale-free property arises from preferential attachment during network growth. It doesn't mean all proteins interact only with large proteins, nor that interactions are uniform (that's a random/Poisson network, the opposite of power-law), nor that function is predictable only by size. So option 2 is correct."
+  },
+  {
+    "question": "What is a regulatory network composed of?",
+    "options": [
+      "Enzymes for breaking down nutrients only",
+      "Amino acids linked in a chain",
+      "Entities that control gene transcription",
+      "Lipids transporting energy across membranes"
+    ],
+    "correct_index": 2,
+    "verified": true,
+    "source": {
+      "type": "pdf",
+      "file": "5Network.02.BioNetwork.pdf",
+      "page": 33,
+      "note": "Slides: a regulatory network is a collection of interacting genes/entities that govern the rates at which genes are transcribed into mRNA."
+    },
+    "explanation": "The slides define a regulatory network as a collection of DNA segments (genes) in a cell which interact with each other and with other substances in the cell, thereby governing the rates at which genes in the network are transcribed into mRNA. So a regulatory network is composed of entities (genes, transcription factors, and other regulatory molecules) that control gene transcription — not nutrient-breakdown enzymes, a plain amino acid chain, or lipid energy transport, which describe unrelated biological concepts."
+  },
+  {
+    "question": "What is the purpose of clustering?",
+    "options": [
+      "To sort records in alphabetical order based on context",
+      "To produce intermediate records to identify outliers",
+      "To generate class labels from scratch and apply it to records",
+      "To group records together based on feature similarity"
+    ],
+    "correct_index": 3,
+    "verified": true,
+    "source": {
+      "type": "pdf",
+      "file": "3ML.01.Introduction.pdf",
+      "page": 29,
+      "note": "Slides: clustering partitions instances into clusters by maximizing similarity within a cluster and minimizing similarity across clusters."
+    },
+    "explanation": "Clustering is an unsupervised learning task where instances are partitioned into groups (clusters) so that similarity of instances within the same cluster is maximized and similarity of instances in different clusters is minimized. It doesn't use predefined labels (unlike classification), isn't about alphabetical sorting, and isn't specifically an outlier-detection procedure. So the purpose of clustering is to group records together based on feature similarity."
+  },
+  {
+    "question": "What are the minimum required fields in the BED format?",
+    "options": [
+      "ID, Name, Score",
+      "Gene, Exon, Intron",
+      "chrom, chromStart, chromEnd",
+      "start, end, attribute"
+    ],
+    "correct_index": 2,
+    "verified": true,
+    "source": {
+      "type": "pdf",
+      "file": "2NGS.02.Formats_seqBasicTools.pdf",
+      "page": 26,
+      "note": "Slides: the first three fields of a BED line are required — chrom, chromStart, chromEnd."
+    },
+    "explanation": "The BED (Browser Extensible Data) format describes genomic features one per line. Only the first three fields are mandatory: chrom (chromosome name), chromStart (feature start position), and chromEnd (feature end position). Additional fields (name, score, strand, thickStart, thickEnd, itemRgb, blockCount, etc.) are optional and can be added after these three. So the minimum required fields are chrom, chromStart, chromEnd."
+  },
+  {
+    "question": "How does alternative splicing benefit organisms?",
+    "options": [
+      "It allows a single gene to produce multiple proteins",
+      "It ensures only one mRNA is made per gene",
+      "It deletes faulty genes",
+      "It prevents protein folding errors"
+    ],
+    "correct_index": 0,
+    "verified": true,
+    "source": {
+      "type": "pdf",
+      "file": "1Intro_MolBio.01.Introduction to Molecular Biology and Bioinf.pdf",
+      "page": 24,
+      "note": "Slides: exons can be reconnected in multiple ways during splicing, so different mRNAs from the same gene translate into different protein isoforms."
+    },
+    "explanation": "During RNA splicing, the exons produced from transcription of a single gene can be reconnected in multiple combinations, producing different mature mRNAs. These different mRNAs can be translated into different protein isoforms, meaning a single gene can code for multiple distinct proteins. This greatly expands the protein diversity an organism can generate without needing a proportionally larger genome. It doesn't ensure only one mRNA per gene (the opposite), doesn't delete genes, and isn't a protein-folding quality-control mechanism."
+  },
+  {
+    "question": "What is a common error when interpreting correlation?",
+    "options": [
+      "Ignoring data plots",
+      "Applying it to large datasets only",
+      "Assuming it implies causation",
+      "Using it with qualitative data"
+    ],
+    "correct_index": 2,
+    "verified": true,
+    "source": {
+      "type": "pdf",
+      "file": "4Data.Data_and_statistics.pdf",
+      "note": "Slides (Causality section): a strong correlation does not necessarily imply a causal relationship; caution is advised before stating cause-effect from association alone."
+    },
+    "explanation": "A strong correlation between two variables only shows they tend to vary together — it says nothing about which (if either) causes the other, or whether both are driven by a third, confounding variable. The slides explicitly warn to be cautious about claiming a cause-effect relationship just because two variables are strongly associated. Treating correlation as proof of causation is the classic, common interpretation error, not a matter of dataset size, plotting, or data type."
+  },
+  {
+    "question": "Which algorithmic technique is used to perform sequence alignment efficiently?",
+    "options": [
+      "Dynamic programming",
+      "Depth-first search",
+      "Random sampling",
+      "Greedy hashing"
+    ],
+    "correct_index": 0,
+    "verified": true,
+    "source": {
+      "type": "pdf",
+      "file": "2NGS.01.Alignment.pdf",
+      "note": "Slides: global sequence alignment is solved efficiently using dynamic programming, building the solution from smaller partial sub-problems."
+    },
+    "explanation": "Sequence alignment (e.g. global alignment, as in the Needleman-Wunsch algorithm) is solved efficiently using dynamic programming: the problem is broken into smaller, overlapping partial alignment sub-problems, each solved once and stored in a matrix, then combined (via traceback) to build the optimal full alignment. This avoids the exponential cost of trying every possible alignment. It's not solved via depth-first search, random sampling, or hashing-based greedy shortcuts."
   }
 ];
