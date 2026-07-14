@@ -1106,14 +1106,14 @@ const allQuestions = [
     "explanation": "A linear system obeys the superposition principle — output scales additively with input, with no qualitatively new behavior from interactions. Emergent properties (novel behaviors arising only from collective interaction, unpredictable from parts alone) are the hallmark of complex, nonlinear systems, not linear ones. Attributing emergence to a 'linear system' is a contradiction in terms, so the statement is false — important for understanding why biological networks (nonlinear) are studied as systems, not simple sums of parts."
   },
   {
-    "question": "Which of the following is incorrect about k-Means Clustering?",
+    "question": "Which of the following is correct about k-Means Clustering?",
     "options": [
       "It is a deep learning method",
       "k-means clustering produces a dendrogram",
       "It is a divisive approach",
       "In this method, data are partitioned into k-clusters, which are prespecified at the outset"
     ],
-    "correct_index": 0,
+    "correct_index": 3,
     "verified": true,
     "source": {
       "type": "pdf",
@@ -1121,7 +1121,7 @@ const allQuestions = [
       "page": 28,
       "note": "Slides classify k-means as unsupervised clustering, not deep learning; it's also non-hierarchical (no dendrogram) and non-divisive."
     },
-    "explanation": "K-means is a classical unsupervised statistical clustering algorithm — no neural network, no layers, no learned weights — taught under classical unsupervised learning, not deep learning. It's also not hierarchical (produces no dendrogram) and not a divisive top-down method. Of these possible errors, calling it a 'deep learning method' is the most fundamental misclassification, since it misidentifies the entire category of algorithm. So option 0 is the incorrect statement."
+    "explanation": "K-means is a classical unsupervised statistical clustering algorithm — no neural network, no layers, no learned weights — so it is not a deep learning method. It's also not hierarchical (produces no dendrogram) and not a divisive top-down method. The only correct statement is that k-means partitions data into k clusters, where k is prespecified at the outset."
   },
   {
     "question": "Motor complications in Parkinson's disease include:",
