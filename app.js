@@ -8,7 +8,6 @@ const welcomeScreen = document.getElementById('welcome-screen');
 const quizScreen = document.getElementById('quiz-screen');
 const resultScreen = document.getElementById('result-screen');
 
-const progressInfo = document.getElementById('progress-info');
 const progressBarContainer = document.getElementById('progress-bar-container');
 const progressBarFill = document.getElementById('progress-bar-fill');
 
@@ -95,8 +94,7 @@ function startQuiz() {
   resultScreen.classList.remove('active');
   quizScreen.classList.add('active');
   
-  // Show progress indicators
-  progressInfo.style.display = 'block';
+  // Show progress indicator
   progressBarContainer.style.display = 'block';
   
   // 5. Display first question
@@ -113,11 +111,10 @@ function displayQuestion() {
 
   const currentQ = quizQuestions[currentIndex];
 
-  // Update Question Text (Prepend clean sequential question number)
-  questionText.innerHTML = `<span style="color:var(--primary); font-size:1.1rem; font-weight:700; display:block; margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Question ${currentIndex + 1}</span>${currentQ.question}`;
+  // Update Question Text (Prepend clean sequential question number + total)
+  questionText.innerHTML = `<span style="color:var(--primary); font-size:1.1rem; font-weight:700; display:block; margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Question ${currentIndex + 1} of ${quizQuestions.length}</span>${currentQ.question}`;
 
-  // Update Progress Info & Progress Bar
-  progressInfo.textContent = `Q ${currentIndex + 1} / ${quizQuestions.length}`;
+  // Update Progress Bar
   const progress = (currentIndex / quizQuestions.length) * 100;
   progressBarFill.style.width = `${progress}%`;
 
@@ -254,7 +251,6 @@ function nextQuestion() {
 // Display results dashboard
 function showResults() {
   quizScreen.classList.remove('active');
-  progressInfo.style.display = 'none';
   progressBarContainer.style.display = 'none';
   
   resultScreen.classList.add('active');
