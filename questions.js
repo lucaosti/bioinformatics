@@ -128,21 +128,6 @@ const allQuestions = [
     "change_note": "The original quiz marked this as 'true' (chronic patients should always be treated at home), which is medically incorrect due to the absolute word 'always'. Home/remote monitoring is valuable for chronic disease management but cannot replace hospital treatment during acute exacerbations or emergencies. The corrected answer 'false' better reflects real clinical practice, per literature on chronic disease telemonitoring (PMC10132045), which treats home monitoring as complementary to hospital care, not a full substitute."
   },
   {
-    "question": "The SANGER method can be used to discover the amminoacid sequence of a protein (X)",
-    "options": [
-      "true",
-      "false"
-    ],
-    "correct_index": 1,
-    "verified": true,
-    "source": {
-      "type": "web",
-      "url": "https://en.wikipedia.org/wiki/Sanger_sequencing",
-      "note": "Sanger method is DNA chain-termination sequencing; protein amino-acid sequencing uses Edman degradation/mass spectrometry, not Sanger."
-    },
-    "explanation": "The Sanger method (chain-termination sequencing) determines the nucleotide sequence of DNA using dideoxynucleotides that terminate strand elongation at specific bases. It is a DNA sequencing technology and has nothing to do with directly determining a protein's amino acid sequence. Protein sequencing instead uses Edman degradation (sequential chemical removal/identification of amino acids from the N-terminus) or mass spectrometry. One could indirectly infer an amino acid sequence by sequencing the gene and translating via the genetic code, but that is not the Sanger method itself determining protein sequence directly. So the statement, taken at face value, is false."
-  },
-  {
     "question": "In the analysis of microarray data –If replicated datasets are available–, rigorous statistical tests as t-tests and analysis of variance (ANOVA) can be performed to test the null hypothesis that a given data point is not significantly different from the mean of the data distribution",
     "options": [
       "true",
@@ -823,23 +808,6 @@ const allQuestions = [
     "explanation": "Emergence is when a system exhibits properties arising from interactions among its parts, unpredictable from the parts alone. The slides state complex systems cannot be described in a reductionist view — meaning emergent behavior is a hallmark of complex, nonlinear systems. A linear system, by definition, obeys the superposition principle (output = sum of individual component responses), so by definition it has no emergent, non-additive behavior. Attributing emergence to a 'linear system' misapplies the concept, so the statement is false."
   },
   {
-    "question": "Which of the following is INCORRECT about k-means clustering",
-    "options": [
-      "it classifies data through a single step partition",
-      "k-means clustering produces a dendrogram",
-      "in this method, data are partitioned into k-clusters which are prespecified at the outset",
-      "it is a divisive approach"
-    ],
-    "correct_index": 1,
-    "verified": true,
-    "source": {
-      "type": "web",
-      "url": "https://en.wikipedia.org/wiki/K-means_clustering",
-      "note": "Dendrograms are produced by hierarchical clustering, not k-means; k-means does single-step partitioning into prespecified k clusters."
-    },
-    "explanation": "K-means is a partitional (not hierarchical) algorithm: it directly assigns data into k prespecified clusters in one pass via iterative centroid assignment, producing a flat partition. A dendrogram — a nested tree diagram — is the signature output of hierarchical clustering, not k-means, which has no notion of nested/multi-level structure. So claiming k-means 'produces a dendrogram' is false, making it the incorrect statement (the other options correctly describe k-means)."
-  },
-  {
     "question": "Voice can represent an early marker of neurodegeneration",
     "options": [
       "true",
@@ -868,38 +836,6 @@ const allQuestions = [
       "note": "Standard molecular evolution concept: sequences can diverge beyond recognizable homology despite common ancestry."
     },
     "explanation": "Homologous sequences accumulate independent mutations over evolutionary time; given enough time or rapid divergence, sequences can become so different that alignment-based methods can no longer detect statistically significant similarity, even though they are still related through common descent (the 'twilight zone' of sequence alignment). This is an important caveat: sequence-level non-similarity does not disprove common ancestry. So the statement is true."
-  },
-  {
-    "question": "In DNA sequencing fluorescent traces of the DNA sequences are read by a computer program that assigns bases for each peak in a chromatogram",
-    "options": [
-      "true",
-      "false"
-    ],
-    "correct_index": 0,
-    "verified": true,
-    "source": {
-      "type": "web",
-      "url": "https://en.wikipedia.org/wiki/Sanger_sequencing",
-      "note": "Sanger/capillary sequencing: fluorescent fragments read as chromatogram peaks, base-called by software."
-    },
-    "explanation": "In Sanger sequencing, DNA fragments are labeled with base-specific fluorescent dyes; during capillary electrophoresis, fragments pass a laser detector and fluoresce, producing a chromatogram of colored peaks. Base-calling software (e.g. Phred) automatically analyzes this chromatogram to assign the most likely base at each peak, with a confidence score. This automated workflow is exactly what the statement describes, so it is true."
-  },
-  {
-    "question": "Motor complications in Parkinson’s disease include:",
-    "options": [
-      "Freezing of gait, tremor",
-      "Dyskinesia, freezing of gait",
-      "OFF periods, bradykinesia",
-      "Bradykinesia, postural instability"
-    ],
-    "correct_index": 1,
-    "verified": true,
-    "source": {
-      "type": "web",
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6806991/",
-      "note": "Motor complications in PD specifically = dyskinesia and motor fluctuations (incl. freezing of gait), distinct from cardinal symptoms."
-    },
-    "explanation": "In Parkinson's disease, 'cardinal motor symptoms' (bradykinesia, rigidity, tremor, postural instability) are distinct from 'motor complications', a category referring specifically to problems emerging from long-term levodopa treatment: motor fluctuations (OFF periods, freezing of gait) and dyskinesias (involuntary movements from fluctuating drug levels). Dyskinesia + freezing of gait are the textbook treatment-related complications, distinguishing them from baseline cardinal symptoms. The other options mix in cardinal symptoms (tremor, bradykinesia, postural instability), which are not classified as 'complications'. So option 1 is correct."
   },
   {
     "question": "Which of the following is INCORRECT about a microarray?",
@@ -1058,22 +994,6 @@ const allQuestions = [
       "note": "RNA (Watson-Crick) base pairing is A-U and G-C, not A-G and U-C; statement as written is false."
     },
     "explanation": "Watson-Crick base pairing rules: in RNA, Adenine pairs with Uracil (A-U) and Guanine pairs with Cytosine (G-C) — one purine with one pyrimidine each, maintaining uniform helix width. A-G would pair two purines (too wide) and U-C would pair two pyrimidines (too narrow), which is not how base pairing works. So the statement as written (A-G and U-C) is false."
-  },
-  {
-    "question": "Machine Learning vs Deep Learning requires more data but reduces user dependency, requires much computational power, and is less interpretable.",
-    "options": [
-      "True",
-      "False"
-    ],
-    "correct_index": 1,
-    "verified": true,
-    "source": {
-      "type": "pdf",
-      "file": "3ML.05.NeuralNetworks_DeepLearning.pdf",
-      "page": 47,
-      "note": "Same structure as Q5: statement attributes DL traits (more data, more compute, less interpretable) to ML; that's reversed, so false — consistent with Q5's independently verified answer."
-    },
-    "explanation": "This follows the same pattern as the earlier 'ML vs DL' question: it is DL, not ML, that needs more data, more compute, reduces manual feature engineering, and is less interpretable. The statement attributes all these DL traits to 'Machine Learning' in a comparison against Deep Learning, reversing the actual relationship. So the statement is false, consistent with the parallel question's logic."
   },
   {
     "question": "In DNA sequencing, fluorescent traces of the DNA sequences are read by a computer program that assigns bases for each peak in a chromatogram.",
