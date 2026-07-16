@@ -600,23 +600,6 @@ const allQuestions = [
     "explanation": "A dendrogram is a tree-like diagram showing hierarchical relationships based on similarity/distance; in molecular biology this exact structure depicts phylogenetic trees, visualizing evolutionary relationships and common ancestry. The other options (data search tool, GenBank, data retrieving tool) are software/database categories used to find or fetch sequence data — not visual representations of phylogenetic relationships themselves. So dendrogram is correct."
   },
   {
-    "question": "Which of the following is untrue regarding prediction with NN?",
-    "options": [
-      "it as to be first trained with known structures",
-      "between input and output are mani connected hidden layers",
-      "between the connected hidden layers the machine learning takes place to adjust the mathematical weights of internal connections",
-      "it doesn’t have to be first trained by sequences with known structures"
-    ],
-    "correct_index": 3,
-    "verified": true,
-    "source": {
-      "type": "pdf",
-      "file": "3ML.05.NeuralNetworks_DeepLearning.pdf",
-      "note": "NN-based structure prediction requires supervised training on known structures first; claiming otherwise is the untrue statement."
-    },
-    "explanation": "NN-based structure prediction is a supervised learning task requiring training on sequences with known structures before it can generalize to new sequences. This makes 'it doesn't have to be first trained' the untrue statement, since training on known data is a mandatory prerequisite. The other options (training required, hidden layers between input/output, weight adjustment during training) are all accurate descriptions of how these networks work."
-  },
-  {
     "question": "Which of the following is not a base of RNA?",
     "options": [
       "thymine",
@@ -1233,22 +1216,6 @@ const allQuestions = [
       "note": "Poly-A signal/tail marks transcription termination and mRNA 3' processing/stability, not presence of a functional codon."
     },
     "explanation": "Polyadenylation adds a poly-A tail to the 3' end of a eukaryotic mRNA after recognition of a poly-A signal, serving to mark transcription termination, protect against exonuclease degradation, and assist nuclear export/translation. This is entirely independent of 'functional codons' or reading frames (which relate to translation, not 3' mRNA processing) — a transcript can be polyadenylated regardless of whether it contains a functional ORF (e.g. many non-coding RNAs are polyadenylated but never translated). So the statement is false."
-  },
-  {
-    "question": "PolyA may be used as an indicator of the presence of functional codon?",
-    "options": [
-      "true",
-      "false"
-    ],
-    "correct_index": 1,
-    "verified": true,
-    "source": {
-      "type": "web",
-      "url": "https://en.wikipedia.org/wiki/Polyadenylation",
-      "note": "Same underlying claim as Q82: poly-A relates to transcription termination/mRNA processing, not 'functional codon' presence. Corrected to false for consistency with Q82."
-    },
-    "explanation": "This is a near-duplicate of Q82 testing the identical biological claim. Polyadenylation marks transcription termination and aids mRNA stability/export — it has nothing to do with 'functional codons' or reading frames. Poly-A tails are added to many transcripts regardless of coding potential (some non-coding RNAs are polyadenylated). So this statement is also false, and must be scored the same as Q82 for internal consistency.",
-    "change_note": "The original quiz marked this answer 'true', which directly contradicted the near-duplicate Q82 (same underlying claim, originally marked 'false') — an internal inconsistency between two questions testing the same fact. Since poly-A signal biology relates to transcription termination and mRNA 3' processing/stability, not to identifying a functional codon or reading frame, the claim is false. The answer was corrected from 'true' to 'false' to align with correct molecular biology and make Q82 and Q84 consistent with each other."
   },
   {
     "question": "What is the purpose of QQ plot?",

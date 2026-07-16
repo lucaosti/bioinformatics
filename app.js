@@ -31,6 +31,31 @@ const sourcePanel = document.getElementById('source-panel');
 
 const themeToggleBtn = document.getElementById('theme-toggle');
 
+const pdfOrderDesc = document.getElementById('pdf-order-desc');
+const randomAllDesc = document.getElementById('random-all-desc');
+const quickModeTitle = document.getElementById('quick-mode-title');
+const quickModeDesc = document.getElementById('quick-mode-desc');
+
+// Target size of the "Quick" mode sample, recomputed on demand each time so
+// it always reflects the current questions.js pool (never hardcoded/cached)
+const QUICK_MODE_TARGET = 15;
+function getQuickModeCount() {
+  return Math.min(QUICK_MODE_TARGET, allQuestions.length);
+}
+
+// Populate all question-count labels from the actual questions.js pool —
+// nothing about "how many questions" is ever hardcoded in the HTML
+function updateQuestionCountLabels() {
+  const total = allQuestions.length;
+  const quickCount = getQuickModeCount();
+  pdfOrderDesc.textContent = `Show all ${total} questions in original sequence`;
+  randomAllDesc.textContent = `Shuffle and show all ${total} questions`;
+  quickModeTitle.textContent = `Quick ${quickCount}`;
+  quickModeDesc.textContent = `Solve ${quickCount} randomly selected questions`;
+  totalCountSpan.textContent = total;
+}
+updateQuestionCountLabels();
+
 // Event Listeners
 startBtn.addEventListener('click', startQuiz);
 prevBtn.addEventListener('click', prevQuestion);
@@ -96,7 +121,7 @@ function startQuiz() {
   if (questionMode === 'random-all') {
     activeQuestions = shuffleArray(activeQuestions);
   } else if (questionMode === 'random-15') {
-    activeQuestions = shuffleArray(activeQuestions).slice(0, 15);
+    activeQuestions = shuffleArray(activeQuestions).slice(0, getQuickModeCount());
   } // 'pdf-order' stays as is
   
   // 2. Prepare option order for each question
