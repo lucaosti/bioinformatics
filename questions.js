@@ -1348,23 +1348,6 @@ const allQuestions = [
     "explanation": "Polyadenylation adds a poly-A tail to the 3' end of a eukaryotic mRNA after recognition of a poly-A signal, serving to mark transcription termination, protect against exonuclease degradation, and assist nuclear export/translation. This is entirely independent of 'functional codons' or reading frames (which relate to translation, not 3' mRNA processing) — a transcript can be polyadenylated regardless of whether it contains a functional ORF (e.g. many non-coding RNAs are polyadenylated but never translated). So the statement is false."
   },
   {
-    "question": "Which of the following is incorrect about k-Means Clustering?",
-    "options": [
-      "It is a divisive approach",
-      "K-means clustering does not produce a dendrogram",
-      "In this method data are partitioned into k-clusters which are prespecified at the outset",
-      "It is a deep learning method"
-    ],
-    "correct_index": 3,
-    "verified": true,
-    "source": {
-      "type": "web",
-      "url": "https://en.wikipedia.org/wiki/K-means_clustering",
-      "note": "K-means is a classical partitional algorithm, not a deep learning method — the incorrect statement."
-    },
-    "explanation": "K-means is a classical, decades-old partitional clustering algorithm from statistics/unsupervised ML — not a deep learning method (deep learning means training multi-layer neural networks, an entirely different family). The other options correctly describe k-means: it's a divisive-style direct partitioning approach, produces no dendrogram (that's hierarchical clustering's output), and requires a prespecified k. So calling it a 'deep learning method' is the incorrect statement."
-  },
-  {
     "question": "PolyA may be used as an indicator of the presence of functional codon?",
     "options": [
       "true",
