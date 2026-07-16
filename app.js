@@ -29,12 +29,50 @@ const sourceContainer = document.getElementById('source-container');
 const sourceBtn = document.getElementById('source-btn');
 const sourcePanel = document.getElementById('source-panel');
 
+const themeToggleBtn = document.getElementById('theme-toggle');
+
 // Event Listeners
 startBtn.addEventListener('click', startQuiz);
 prevBtn.addEventListener('click', prevQuestion);
 nextBtn.addEventListener('click', nextQuestion);
 restartBtn.addEventListener('click', restartQuiz);
 sourceBtn.addEventListener('click', toggleSourcePanel);
+themeToggleBtn.addEventListener('click', toggleTheme);
+
+// Theme handling: explicit user choice is saved in localStorage; with no
+// explicit choice, the OS 'prefers-color-scheme' decides (handled in CSS/head script)
+const prefersDarkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+function getStoredTheme() {
+  return localStorage.getItem('theme'); // 'light' | 'dark' | null
+}
+
+function getEffectiveTheme() {
+  const stored = getStoredTheme();
+  if (stored === 'light' || stored === 'dark') return stored;
+  return prefersDarkQuery.matches ? 'dark' : 'light';
+}
+
+function updateThemeToggleIcon() {
+  const isDark = getEffectiveTheme() === 'dark';
+  themeToggleBtn.innerHTML = isDark
+    ? '<i class="fa-solid fa-moon"></i>'
+    : '<i class="fa-solid fa-sun"></i>';
+}
+
+function toggleTheme() {
+  const next = getEffectiveTheme() === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  updateThemeToggleIcon();
+}
+
+// Keep the icon in sync if the OS theme changes and the user hasn't overridden it
+prefersDarkQuery.addEventListener('change', () => {
+  if (!getStoredTheme()) updateThemeToggleIcon();
+});
+
+updateThemeToggleIcon();
 
 // Helper function to shuffle array
 function shuffleArray(array) {

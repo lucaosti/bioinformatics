@@ -5,6 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bioinformatics Practice Exam</title>
+  <!-- Apply any saved theme choice before first paint to avoid a flash of the wrong theme -->
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.setAttribute('data-theme', stored);
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,6 +26,9 @@
   <div class="bg-glow-2"></div>
 
   <div id="quiz-container">
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
     <!-- Quiz Header -->
     <header>
       <div class="app-title-container">
@@ -48,7 +60,7 @@
                 <div class="card-content">
                   <div class="card-icon"><i class="fa-solid fa-list-ol"></i></div>
                   <div class="card-title">PDF Order</div>
-                  <div class="card-desc">Show all 87 questions in original sequence</div>
+                  <div class="card-desc">Show all 85 questions in original sequence</div>
                 </div>
               </label>
 
@@ -57,7 +69,7 @@
                 <div class="card-content">
                   <div class="card-icon"><i class="fa-solid fa-shuffle"></i></div>
                   <div class="card-title">Random All</div>
-                  <div class="card-desc">Shuffle and show all 87 questions</div>
+                  <div class="card-desc">Shuffle and show all 85 questions</div>
                 </div>
               </label>
 

@@ -289,23 +289,6 @@ const allQuestions = [
     "explanation": "System complexity is a primary factor determining which reverse-engineering methodology is appropriate: simple/linear systems can often be tackled with bottom-up, mechanistic approaches, while highly complex systems (with many interacting nonlinear components) typically require top-down, data-driven inference methods because exhaustive component-by-component modeling becomes intractable. Since complexity does influence methodology choice, the claim that it 'should NOT influence' methodology is false."
   },
   {
-    "question": "Which of the following is UNTRUE about distance based methods",
-    "options": [
-      "based on the pairwise distance scores in the matrix, phylogenetic tree can be constructed for all the taxa involved",
-      "clustering-type algorithms compute a tree based on a distance matrix starting from the most similar sequence pairs",
-      "clustering is the only method among the algorithms for distance-based tree-building method",
-      "The computed evolutionary distances can be used to construct a matrix of distances between all individual pairs of taxa"
-    ],
-    "correct_index": 2,
-    "verified": true,
-    "source": {
-      "type": "web",
-      "url": "https://en.wikipedia.org/wiki/Neighbor_joining",
-      "note": "Distance-based tree-building includes UPGMA (clustering) AND Neighbor-Joining/Fitch-Margoliash; clustering is not the only method."
-    },
-    "explanation": "Distance-based phylogenetic tree-building starts by computing pairwise evolutionary distances between sequences, assembling them into a distance matrix, then building a tree from that matrix. Multiple distinct algorithms exist for this: clustering-type methods (like UPGMA, which joins the most similar pairs first) as well as Neighbor-Joining and Fitch-Margoliash, which use different assumptions (e.g. not requiring a constant molecular clock). Since clustering is NOT the only method — UPGMA-style clustering is just one of several distance-based approaches — claiming it's the only one is the untrue statement."
-  },
-  {
     "question": "Which of the following is incorrect about Hierarchical Clustering?",
     "options": [
       "in the tree leaves, similar gene expression profiles are placed more closely together then dissimilar gene expression profiles",
@@ -790,22 +773,6 @@ const allQuestions = [
       "note": "Data cleaning is the dominant time/cost in data science pipelines, not negligible."
     },
     "explanation": "Industry surveys consistently show data scientists spend roughly 60-80% of project time on collecting/cleaning data, making it the single most time- and resource-consuming pipeline step — far from negligible. While wet-lab experiments are expensive, the downstream computational cleaning (quality filtering, normalization, batch-effect correction) is also a substantial cost that cannot be dismissed. So claiming this cost is 'negligible' compared to lab experiments is false."
-  },
-  {
-    "question": "In a linear system some functionalities emerge from the interactions of its parts",
-    "options": [
-      "true",
-      "false"
-    ],
-    "correct_index": 1,
-    "verified": true,
-    "source": {
-      "type": "pdf",
-      "file": "5Network.02.BioNetwork.pdf",
-      "page": 10,
-      "note": "Slides: complex systems (not linear ones) cannot be described in a reductionist view — emergence is a complex-system property."
-    },
-    "explanation": "Emergence is when a system exhibits properties arising from interactions among its parts, unpredictable from the parts alone. The slides state complex systems cannot be described in a reductionist view — meaning emergent behavior is a hallmark of complex, nonlinear systems. A linear system, by definition, obeys the superposition principle (output = sum of individual component responses), so by definition it has no emergent, non-additive behavior. Attributing emergence to a 'linear system' misapplies the concept, so the statement is false."
   },
   {
     "question": "Voice can represent an early marker of neurodegeneration",

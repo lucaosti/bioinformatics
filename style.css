@@ -10,7 +10,7 @@
 }
 
 :root {
-  /* Matte Slate & Charcoal Color Palette */
+  /* Matte Slate & Charcoal Color Palette (Dark - default) */
   --bg-gradient-start: hsl(240, 10%, 4%);
   --bg-gradient-end: hsl(240, 10%, 2%);
   --card-bg: hsl(240, 6%, 10%);
@@ -27,16 +27,32 @@
   --success-bg: hsla(142.1, 70.6%, 45.3%, 0.08);
   --success-border: hsla(142.1, 70.6%, 45.3%, 0.35);
   --success-glow: transparent;
+  --success-text-strong: hsl(142, 80%, 90%);
 
   --error: hsl(346.8, 77.2%, 49.8%);
   --error-bg: hsla(346.8, 77.2%, 49.8%, 0.08);
   --error-border: hsla(346.8, 77.2%, 49.8%, 0.35);
   --error-glow: transparent;
+  --error-text-strong: hsl(350, 90%, 90%);
+
+  --warning: hsl(40, 90%, 60%);
+  --warning-bg: hsla(40, 90%, 60%, 0.1);
+  --warning-border: hsla(40, 90%, 60%, 0.35);
+  --warning-text: hsl(40, 90%, 75%);
+  --warning-text-strong: hsl(40, 90%, 85%);
+
+  --accent-cyan: hsl(190, 90%, 50%);
 
   --option-bg: hsl(240, 6%, 12%);
   --option-hover: hsl(240, 6%, 16%);
   --option-border: hsl(240, 6%, 16%);
   --option-selected-border: hsl(215, 89%, 54%);
+  --option-selected-bg: hsla(263, 90%, 60%, 0.12);
+
+  --track-bg: hsl(240, 6%, 15%);
+  --prefix-bg: hsl(240, 6%, 20%);
+  --gauge-track: hsla(222, 20%, 20%, 0.8);
+  --card-border-hover: hsl(240, 6%, 22%);
 
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -44,6 +60,106 @@
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 12px 30px -10px rgba(0, 0, 0, 0.6);
   --shadow-glow: none;
+}
+
+/* Light theme overrides — applied when the user picks "light" explicitly,
+   or automatically when the OS prefers light and no explicit choice was made */
+:root[data-theme="light"] {
+  --bg-gradient-start: hsl(220, 25%, 97%);
+  --bg-gradient-end: hsl(220, 20%, 93%);
+  --card-bg: hsl(0, 0%, 100%);
+  --card-border: hsl(220, 15%, 88%);
+
+  --primary: hsl(215, 85%, 48%);
+  --primary-hover: hsl(215, 85%, 42%);
+  --primary-glow: hsla(215, 85%, 48%, 0.15);
+
+  --text-main: hsl(222, 25%, 14%);
+  --text-muted: hsl(220, 10%, 42%);
+
+  --success: hsl(142, 65%, 32%);
+  --success-bg: hsla(142, 65%, 35%, 0.1);
+  --success-border: hsla(142, 65%, 35%, 0.35);
+  --success-text-strong: hsl(142, 65%, 24%);
+
+  --error: hsl(347, 75%, 42%);
+  --error-bg: hsla(347, 75%, 42%, 0.08);
+  --error-border: hsla(347, 75%, 42%, 0.35);
+  --error-text-strong: hsl(347, 75%, 32%);
+
+  --warning: hsl(38, 85%, 40%);
+  --warning-bg: hsla(38, 85%, 45%, 0.12);
+  --warning-border: hsla(38, 85%, 45%, 0.35);
+  --warning-text: hsl(38, 85%, 30%);
+  --warning-text-strong: hsl(38, 85%, 20%);
+
+  --accent-cyan: hsl(195, 85%, 36%);
+
+  --option-bg: hsl(220, 20%, 97%);
+  --option-hover: hsl(220, 20%, 92%);
+  --option-border: hsl(220, 15%, 88%);
+  --option-selected-border: hsl(215, 85%, 48%);
+  --option-selected-bg: hsla(215, 85%, 48%, 0.1);
+
+  --track-bg: hsl(220, 15%, 90%);
+  --prefix-bg: hsl(220, 15%, 89%);
+  --gauge-track: hsla(220, 15%, 82%, 0.9);
+  --card-border-hover: hsl(220, 15%, 75%);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 12px 30px -10px rgba(0, 0, 0, 0.12);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --bg-gradient-start: hsl(220, 25%, 97%);
+    --bg-gradient-end: hsl(220, 20%, 93%);
+    --card-bg: hsl(0, 0%, 100%);
+    --card-border: hsl(220, 15%, 88%);
+
+    --primary: hsl(215, 85%, 48%);
+    --primary-hover: hsl(215, 85%, 42%);
+    --primary-glow: hsla(215, 85%, 48%, 0.15);
+
+    --text-main: hsl(222, 25%, 14%);
+    --text-muted: hsl(220, 10%, 42%);
+
+    --success: hsl(142, 65%, 32%);
+    --success-bg: hsla(142, 65%, 35%, 0.1);
+    --success-border: hsla(142, 65%, 35%, 0.35);
+    --success-text-strong: hsl(142, 65%, 24%);
+
+    --error: hsl(347, 75%, 42%);
+    --error-bg: hsla(347, 75%, 42%, 0.08);
+    --error-border: hsla(347, 75%, 42%, 0.35);
+    --error-text-strong: hsl(347, 75%, 32%);
+
+    --warning: hsl(38, 85%, 40%);
+    --warning-bg: hsla(38, 85%, 45%, 0.12);
+    --warning-border: hsla(38, 85%, 45%, 0.35);
+    --warning-text: hsl(38, 85%, 30%);
+    --warning-text-strong: hsl(38, 85%, 20%);
+
+    --accent-cyan: hsl(195, 85%, 36%);
+
+    --option-bg: hsl(220, 20%, 97%);
+    --option-hover: hsl(220, 20%, 92%);
+    --option-border: hsl(220, 15%, 88%);
+    --option-selected-border: hsl(215, 85%, 48%);
+    --option-selected-bg: hsla(215, 85%, 48%, 0.1);
+
+    --track-bg: hsl(220, 15%, 90%);
+    --prefix-bg: hsl(220, 15%, 89%);
+    --gauge-track: hsla(220, 15%, 82%, 0.9);
+    --card-border-hover: hsl(220, 15%, 75%);
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 12px 30px -10px rgba(0, 0, 0, 0.12);
+  }
+}
+
+* {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
 body {
@@ -84,7 +200,7 @@ body {
 }
 
 #quiz-container:hover {
-  border-color: hsl(240, 6%, 22%);
+  border-color: var(--card-border-hover);
 }
 
 /* Header & Progress */
@@ -111,7 +227,7 @@ h1 {
 .progress-bar-container {
   width: 100%;
   height: 4px;
-  background: hsl(240, 6%, 15%);
+  background: var(--track-bg);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -122,6 +238,33 @@ h1 {
   background: var(--primary);
   border-radius: 10px;
   transition: width 0.4s cubic-bezier(0.1, 0.8, 0.25, 1);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--option-border);
+  background: var(--option-bg);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+  z-index: 2;
+}
+
+.theme-toggle:hover {
+  background: var(--option-hover);
+  color: var(--text-main);
+  border-color: var(--option-selected-border);
+  transform: translateY(-2px);
 }
 
 /* Screen Transitions */
@@ -235,14 +378,14 @@ h1 {
 .option-btn.correct {
   background: var(--success-bg) !important;
   border-color: var(--success-border) !important;
-  color: hsl(142, 80%, 90%) !important;
+  color: var(--success-text-strong) !important;
   font-weight: 600;
 }
 
 .option-btn.wrong {
   background: var(--error-bg) !important;
   border-color: var(--error-border) !important;
-  color: hsl(350, 90%, 90%) !important;
+  color: var(--error-text-strong) !important;
   font-weight: 600;
 }
 
@@ -268,7 +411,7 @@ h1 {
   font-weight: 700;
   color: var(--text-muted);
   margin-right: 12px;
-  background: hsl(240, 6%, 20%);
+  background: var(--prefix-bg);
   padding: 2px 8px;
   border-radius: 6px;
   font-size: 0.85rem;
@@ -361,9 +504,9 @@ h1 {
 }
 
 .source-badge.unverified {
-  color: hsl(40, 90%, 60%);
-  background: hsla(40, 90%, 60%, 0.1);
-  border: 1px solid hsla(40, 90%, 60%, 0.35);
+  color: var(--warning);
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-border);
 }
 
 .source-origin {
@@ -390,16 +533,16 @@ h1 {
 .change-banner {
   margin-top: 12px;
   padding: 10px 14px;
-  background: hsla(40, 90%, 60%, 0.1);
-  border: 1px solid hsla(40, 90%, 60%, 0.35);
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-border);
   border-radius: 10px;
-  color: hsl(40, 90%, 75%);
+  color: var(--warning-text);
   font-size: 0.82rem;
   line-height: 1.5;
 }
 
 .change-banner strong {
-  color: hsl(40, 90%, 85%);
+  color: var(--warning-text-strong);
 }
 
 .explanation-block {
@@ -533,7 +676,7 @@ h1 {
 
 .gauge-bg {
   fill: none;
-  stroke: hsla(222, 20%, 20%, 0.8);
+  stroke: var(--gauge-track);
   stroke-width: 12;
 }
 
@@ -591,7 +734,7 @@ h1 {
 }
 
 .score-highlight {
-  color: hsl(190, 90%, 50%);
+  color: var(--accent-cyan);
   font-weight: 700;
 }
 
@@ -663,7 +806,7 @@ h1 {
 }
 
 .radio-card input[type="radio"]:checked+.card-content {
-  background: hsla(263, 90%, 60%, 0.12);
+  background: var(--option-selected-bg);
   border-color: var(--primary);
   box-shadow: 0 0 15px var(--primary-glow);
 }
@@ -748,6 +891,14 @@ h1 {
 @media (max-width: 600px) {
   #quiz-container {
     padding: 24px 16px;
+  }
+
+  .theme-toggle {
+    top: 14px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
   }
 
   h1 {
