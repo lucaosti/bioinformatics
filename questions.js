@@ -1357,5 +1357,139 @@ const allQuestions = [
       "note": "Slides: global sequence alignment is solved efficiently using dynamic programming, building the solution from smaller partial sub-problems."
     },
     "explanation": "Sequence alignment (e.g. global alignment, as in the Needleman-Wunsch algorithm) is solved efficiently using dynamic programming: the problem is broken into smaller, overlapping partial alignment sub-problems, each solved once and stored in a matrix, then combined (via traceback) to build the optimal full alignment. This avoids the exponential cost of trying every possible alignment. It's not solved via depth-first search, random sampling, or hashing-based greedy shortcuts."
+  },
+  {
+    "question": "What does a support vector machine try to maximize?",
+    "options": [
+      "the entropy of the data",
+      "the number of features",
+      "the posterior probability",
+      "the margin between classes"
+    ],
+    "correct_index": 3,
+    "verified": true,
+    "source": {
+      "type": "web",
+      "url": "https://en.wikipedia.org/wiki/Support_vector_machine",
+      "note": "SVM finds the separating hyperplane that maximizes the margin between classes."
+    },
+    "explanation": "A support vector machine constructs a decision boundary (hyperplane) that separates classes while maximizing the margin — the distance between the hyperplane and the closest training points of each class (the support vectors). Maximizing this margin, rather than just finding any separating boundary, is what gives SVMs strong generalization. It doesn't directly maximize entropy, feature count, or posterior probability (that's more characteristic of probabilistic classifiers like Naive Bayes/logistic regression), so the margin between classes is correct."
+  },
+  {
+    "question": "The box plot shows:",
+    "options": [
+      "median and outliers",
+      "frequency distribution",
+      "skewness",
+      "none of the above"
+    ],
+    "correct_index": 0,
+    "verified": true,
+    "source": {
+      "type": "web",
+      "url": "https://en.wikipedia.org/wiki/Box_plot",
+      "note": "A box plot displays the median, quartiles (IQR box) and outliers of a distribution."
+    },
+    "explanation": "A box plot (box-and-whisker plot) visually summarizes a distribution through five key statistics: the minimum, first quartile, median, third quartile and maximum, with points beyond the whiskers flagged as outliers. Unlike a histogram, it doesn't show the full frequency distribution shape, and while it can hint at skewness through box/whisker asymmetry, that isn't its defined purpose. Its textbook-defining features are the median and outliers."
+  },
+  {
+    "question": "The role of ribosomes is important in gene expression because they:",
+    "options": [
+      "create the bond between amino acids to form polypeptides",
+      "they transcribe the genome"
+    ],
+    "correct_index": 0,
+    "verified": true,
+    "source": {
+      "type": "web",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK26937/",
+      "note": "Ribosomes catalyze peptide bond formation between amino acids during translation."
+    },
+    "explanation": "Ribosomes are the molecular machines that carry out translation: they read the mRNA codon sequence and catalyze formation of peptide bonds between successive amino acids delivered by tRNAs, building the polypeptide chain. Transcription (copying DNA into RNA) is carried out by RNA polymerase, not by ribosomes. So ribosomes matter for gene expression because they form the peptide bonds linking amino acids into proteins."
+  },
+  {
+    "question": "In Genetic Algorithm, in the mutation process ___",
+    "options": [
+      "sequence is not changed",
+      "sequence is changed",
+      "gaps are not rearranged",
+      "gaps are not inserted"
+    ],
+    "correct_index": 1,
+    "verified": true,
+    "source": {
+      "type": "web",
+      "url": "https://en.wikipedia.org/wiki/Mutation_(genetic_algorithm)",
+      "note": "Mutation in a GA randomly alters part of a candidate solution's encoded sequence to maintain genetic diversity."
+    },
+    "explanation": "In genetic algorithms, mutation randomly alters one or more positions in an individual's encoded solution, introducing variation that crossover alone cannot generate and helping avoid premature convergence to a local optimum. This means the sequence IS changed by mutation, contrary to claims that it stays the same or that gaps are specifically excluded from the process."
+  },
+  {
+    "question": "What is the main use of regression?",
+    "options": [
+      "To predict one variable from another",
+      "To classify images",
+      "To count how many groups exist",
+      "To compare histograms"
+    ],
+    "correct_index": 0,
+    "verified": true,
+    "source": {
+      "type": "web",
+      "url": "https://en.wikipedia.org/wiki/Regression_analysis",
+      "note": "Regression analysis models the relationship between a dependent variable and one or more predictors to predict continuous outcomes."
+    },
+    "explanation": "Regression analysis estimates the relationship between a dependent (outcome) variable and one or more independent (predictor) variables, so the value of one variable can be predicted from another. Image classification is a supervised classification task (not regression), counting groups describes clustering, and comparing histograms is a descriptive/visual technique, not regression's purpose. So the main use of regression is predicting one variable from another."
+  },
+  {
+    "question": "What does a model with high variance typically suffer from?",
+    "options": [
+      "High bias",
+      "Low flexibility",
+      "Underfitting",
+      "Overfitting"
+    ],
+    "correct_index": 3,
+    "verified": true,
+    "source": {
+      "type": "web",
+      "url": "https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff",
+      "note": "High variance means the model fits training data (and its noise) too closely, generalizing poorly — the definition of overfitting."
+    },
+    "explanation": "In the bias-variance tradeoff, high variance means a model is highly sensitive to the specific training data, fitting its noise and idiosyncrasies rather than the true underlying pattern — this is precisely the definition of overfitting, which shows excellent training performance but poor generalization to new data. High bias, low flexibility, and underfitting describe the opposite failure mode (a model too simple to capture the pattern), so overfitting is correct."
+  },
+  {
+    "question": "Why must proteins fold into a specific shape?",
+    "options": [
+      "Folding generates genetic information",
+      "Shape determines function and interactions",
+      "Folding occurs before transcription",
+      "Unfolded proteins cannot be translated"
+    ],
+    "correct_index": 1,
+    "verified": true,
+    "source": {
+      "type": "pdf",
+      "file": "1Intro_MolBio.02.Proteins-Domain.pdf",
+      "note": "Course material emphasizes that a protein's 3D shape determines its function and binding interactions."
+    },
+    "explanation": "A protein's specific 3D fold determines which molecules it can bind, which reactions it can catalyze, and which other proteins it can interact with — function follows directly from structure (Anfinsen's dogma). Folding doesn't generate genetic information, doesn't occur 'before transcription' (translation happens after transcription, producing the unfolded chain that then folds), and translation itself doesn't require the protein to already be folded. So shape determining function and interactions is correct."
+  },
+  {
+    "question": "How are expression networks typically inferred?",
+    "options": [
+      "From protein shapes determined by X-rays",
+      "From tracking cell movement under a microscope",
+      "From genomic data such as microarrays",
+      "From measuring physical distances in the nucleus"
+    ],
+    "correct_index": 2,
+    "verified": true,
+    "source": {
+      "type": "pdf",
+      "file": "5Network.02.BioNetwork.pdf",
+      "note": "Expression/regulatory networks are inferred from genomic data such as microarray expression profiles."
+    },
+    "explanation": "Expression networks are typically inferred computationally from large-scale genomic expression data — most classically microarray datasets measuring expression levels of many genes across conditions — by identifying statistical co-expression patterns between genes. This is distinct from structural methods (X-ray crystallography determines protein shape, not network topology), microscopy-based cell tracking, or physical nuclear distance measurements, none of which are standard expression-network inference approaches."
   }
 ];
